@@ -31,3 +31,12 @@
     }
 
 }
+
+@media (max-width: 450px) {
+    .auth-screen {
+        .card {
+            max-width: 90vw;
+            height: 60vh;
+        }
+    }
+}
