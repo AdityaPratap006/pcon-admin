@@ -1,0 +1,33 @@
+@import "../../styles/theme";
+
+.auth-screen {
+    width: 100vw;
+    max-width: 100%;
+    height: calc(100vh - 4rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/cool-background.png");
+    background-size: cover;
+
+    .card {
+        width: 25rem;
+        max-width: 80vw;
+        height: 50vh;
+
+        h2 {
+            color: $primary;
+            margin: 0;
+        }
+
+        .auth-form {
+            list-style: none;
+            margin: 0 auto 25px auto;
+            padding: 1rem;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+    }
+
+}

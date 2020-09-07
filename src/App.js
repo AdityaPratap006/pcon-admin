@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { navigationRoutes } from './navigation/routes';
 import MainNavigation from './navigation/MainNavigation';
+import AuthScreen from './screens/AuthScreen';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
         <h1>HOME</h1>
       </Route>
       <Route exact path={navigationRoutes.AUTH}>
-        <h1>AUTH</h1>
+        <AuthScreen />
       </Route>
       <Route exact path={navigationRoutes.USERS}>
         <h1>USER LIST</h1>
