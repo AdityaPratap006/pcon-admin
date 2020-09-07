@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { useAuth } from './hooks/auth-hook';
 import { navigationRoutes } from './navigation/routes';
+import { AuthContext } from './contexts/auth-context';
 import MainNavigation from './navigation/MainNavigation';
 import AuthScreen from './screens/AuthScreen';
 import SplashScreen from './screens/SplashScreen';
@@ -47,12 +48,20 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <MainNavigation />
-        <main>
-          {routes}
-        </main>
-      </Router>
+      <AuthContext.Provider
+        value={{
+          loggedIn,
+          login,
+          logout,
+        }}
+      >
+        <Router>
+          <MainNavigation />
+          <main>
+            {routes}
+          </main>
+        </Router>
+      </AuthContext.Provider>
     </div>
   );
 }
