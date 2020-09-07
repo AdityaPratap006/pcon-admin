@@ -38,7 +38,7 @@ export const useAuth = () => {
         if (localUserData) {
             const userData = JSON.parse(localUserData);
             if (new Date(userData.expirationDate) > new Date()) {
-                login(userData.expirationDate);
+                login(new Date(userData.expirationDate));
             }
         }
 
