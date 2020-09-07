@@ -1,0 +1,7 @@
+@import "../../styles/theme";
+
+.home-screen {
+    min-height: calc(100vh - 4rem);
+    background-image: url('../../assets/cool-background.png');
+    background-size: cover;
+}

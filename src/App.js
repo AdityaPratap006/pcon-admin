@@ -7,6 +7,7 @@ import { AuthContext } from './contexts/auth-context';
 import MainNavigation from './navigation/MainNavigation';
 import AuthScreen from './screens/AuthScreen';
 import SplashScreen from './screens/SplashScreen';
+import HomeScreen from './screens/HomeScreen';
 
 function App() {
   const { checkingAuthState, loggedIn, login, logout } = useAuth();
@@ -20,7 +21,7 @@ function App() {
     routes = (
       <Switch>
         <Route exact path={navigationRoutes.HOME}>
-          <h1>HOME</h1>
+          <HomeScreen />
         </Route>
         <Route exact path={navigationRoutes.USERS}>
           <h1>USER LIST</h1>
