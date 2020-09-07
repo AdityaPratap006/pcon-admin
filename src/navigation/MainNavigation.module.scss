@@ -1,0 +1,32 @@
+@import "../styles/theme";
+
+.navigation {
+    justify-content: flex-start;
+
+    .left-section {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .title {
+            color: #fff;
+            margin: 0 2rem;
+
+            &:hover {
+                a {
+                    color: $primary;
+                }
+            }
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+
+            .active {
+                color: $primary;
+            }
+        }
+    }
+}
