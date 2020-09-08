@@ -1,7 +1,76 @@
 @import "../../styles/theme";
 
+.icon {
+    width: 8rem;
+    height: 8rem;
+}
+
 .home-screen {
     min-height: calc(100vh - 4rem);
-    background-image: url('../../assets/cool-background.png');
-    background-size: cover;
+    padding: 2rem 0;
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+
+        .card {
+            height: 18rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            .body {
+                width: 80%;
+                height: 60%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    font-size: 2rem;
+                    width: 70%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1100px) {
+    .home-screen {
+        .grid {
+            padding: 0 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    .home-screen {
+        .grid {
+            .card {
+                height: 22rem;
+
+                .body {
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    h2 {
+                        font-size: 1.2rem;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 450px) {
+    .home-screen {
+        .grid {
+            padding: 0 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+        }
+    }
 }
