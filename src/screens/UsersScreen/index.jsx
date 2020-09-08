@@ -2,14 +2,19 @@ import React, { useState, useEffect } from 'react';
 import styles from './index.module.scss';
 import Grid from '../../components/Grid';
 import Card from '../../components/Card';
-import Avatar from '../../components/Avatar';
-import CustomButton from '../../components/CustomButton';
-import { usersCollectionRef } from '../../firebase/firebase.utils';
+import UserCard from '../../components/UserCard';
+import { usersCollectionRef, updateUserProfileDocument } from '../../firebase/firebase.utils';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import ErrorModal from '../../components/ErrorModal';
 
 const UsersScreen = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [updating, setUpdating] = useState({
+        id: undefined,
+        status: false,
+    });
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const appliedAndUnverifiedUsersQuery = usersCollectionRef
@@ -31,35 +36,51 @@ const UsersScreen = () => {
         };
     }, []);
 
+    const approveUser = async (userId) => {
+
+        setUpdating({
+            id: userId,
+            status: true,
+        });
+        try {
+            await updateUserProfileDocument(userId, { verified: true });
+        } catch (error) {
+            setError(error.message);
+        }
+        setUpdating({
+            id: userId,
+            status: false,
+        });
+    }
+
+    const clearErrorHandler = () => {
+        setError('');
+    }
 
     const renderedUsers = users.map(user => (
-        <div key={user.id} className={styles['user-item']}>
-            <Card className={styles['user-card']}>
-                <Avatar src={user.photoURL} className={styles['avatar']} />
-                <div className={styles['body']}>
-                    <span>{user.name}</span>
-                    <span>{user.email}</span>
-                    <span>{`Branch: ${user.branch}`}</span>
-                    <span>{`Reg No.: ${user.registrationNum}`}</span>
-                </div>
-                <div className={styles['footer']}>
-                    <CustomButton className={styles['approve-btn']}>
-                        APPROVE
-                    </CustomButton>
-                </div>
-            </Card>
-        </div>
+        <UserCard
+            key={user.id}
+            user={user}
+            updating={updating.id === user.id && updating.status}
+            approveUser={approveUser}
+        />
     ));
 
     return (
-        <div className={styles['users-screen']}>
-            <h3>Users who applied for verification</h3>
-            {loading && <Card className={styles['loader-card']}><LoadingSpinner /></Card>}
-            {!loading && !users.length && <h4>No active requests</h4>}
-            <Grid className={styles['grid']}>
-                {renderedUsers}
-            </Grid>
-        </div>
+        <React.Fragment>
+            <ErrorModal
+                error={error}
+                onClear={clearErrorHandler}
+            />
+            <div className={styles['users-screen']}>
+                <h3>Users who applied for verification</h3>
+                {loading && <Card className={styles['loader-card']}><LoadingSpinner /></Card>}
+                {!loading && !users.length && <h4>No active requests</h4>}
+                <Grid className={styles['grid']}>
+                    {renderedUsers}
+                </Grid>
+            </div>
+        </React.Fragment>
     );
 };
 

@@ -1,5 +1,3 @@
-@import '../../styles/theme';
-
 .users-screen {
     min-height: calc(100vh - 4rem);
     padding: 2rem 0;
@@ -19,61 +17,5 @@
 
     .grid {
         width: 100%;
-
-        .user-item {
-            height: 22rem;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-
-            .user-card {
-                height: 18rem;
-                width: 100%;
-                position: relative;
-                overflow: visible;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-
-                .avatar {
-                    width: 8rem;
-                    height: 8rem;
-                    position: absolute;
-                    top: -4rem;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }
-
-                .body {
-                    width: 100%;
-                    height: 8rem;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    align-items: flex-start;
-
-                    span {
-                        font-size: 0.9rem;
-                        color: $primary;
-                    }
-                }
-
-                .footer {
-                    width: 100%;
-                    height: 4rem;
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-
-                    .approve-btn {
-                        color: #fff;
-                        background-color: #1aa260;
-                        font-size: 0.75rem;
-                    }
-                }
-            }
-        }
-
     }
 }

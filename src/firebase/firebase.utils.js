@@ -26,7 +26,7 @@ export const updateUserProfileDocument = async (userId, data) => {
             ...data,
         });
     } catch (error) {
-        console.log('something went wrong: ', error.message);
+        throw error;
     }
 }
 
