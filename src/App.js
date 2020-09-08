@@ -8,6 +8,7 @@ import MainNavigation from './navigation/MainNavigation';
 import AuthScreen from './screens/AuthScreen';
 import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
+import UsersScreen from './screens/UsersScreen';
 
 function App() {
   const { checkingAuthState, loggedIn, login, logout } = useAuth();
@@ -24,7 +25,7 @@ function App() {
           <HomeScreen />
         </Route>
         <Route exact path={navigationRoutes.USERS}>
-          <h1>USER LIST</h1>
+          <UsersScreen />
         </Route>
         <Route exact path={navigationRoutes.NOTIFICATIONS}>
           <h1>NOTIFICATIONS</h1>
