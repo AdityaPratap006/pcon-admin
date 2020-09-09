@@ -9,6 +9,7 @@ import AuthScreen from './screens/AuthScreen';
 import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
 import UsersScreen from './screens/UsersScreen';
+import InterviewsScreen from './screens/InterviewsScreen';
 
 function App() {
   const { checkingAuthState, loggedIn, login, logout } = useAuth();
@@ -31,7 +32,7 @@ function App() {
           <h1>NOTIFICATIONS</h1>
         </Route>
         <Route exact path={navigationRoutes.INTERVIEW_EXPERIENCES}>
-          <h1>INTERVIEW_EXPERIENCES</h1>
+          <InterviewsScreen />
         </Route>
         <Redirect to={navigationRoutes.HOME} />
       </Switch>

@@ -17,12 +17,24 @@ firebase.initializeApp(firebaseConfig);
 export const firestore = firebase.firestore();
 
 export const usersCollectionRef = firestore.collection(`users`);
+export const interviewsCollectionRef = firestore.collection(`interviews`);
 
 export const updateUserProfileDocument = async (userId, data) => {
 
-    const userRef = firestore.doc(`users/${userId}`);
+    const userRef = usersCollectionRef.doc(userId);
     try {
         await userRef.update({
+            ...data,
+        });
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const updateInterviewDocument = async (interviewId, data) => {
+    const interviewRef = interviewsCollectionRef.doc(interviewId);
+    try {
+        await interviewRef.update({
             ...data,
         });
     } catch (error) {

@@ -1,0 +1,103 @@
+@import "../../styles/theme";
+
+.interviews-screen {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    .screen-title {
+        color: $primary;
+    }
+
+    .grid {
+        margin-top: 2rem;
+        width: 95%;
+        gap: 25px;
+
+        .interview-card {
+            height: 20rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.15s ease-in-out;
+
+            &:hover {
+                box-shadow: 0px 0px 24px 2px $primary;
+            }
+
+            .header {
+                width: 100%;
+                height: 20%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                h2 {
+                    max-width: 100%;
+                    color: $primary;
+                    margin: 0;
+                    font-size: 1.5rem;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+
+                span {
+                    color: $accent;
+                    font-size: 0.9rem;
+
+                }
+            }
+
+            .content {
+                width: 100%;
+                height: 60%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+
+                .name,
+                .regNum,
+                .branch {
+                    color: $primary;
+                    font-size: 1.2rem;
+                }
+
+                .email {
+                    color: $accent;
+                    font-size: 1rem;
+                }
+            }
+
+            .footer {
+                width: 100%;
+                height: 20%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                button,
+                a {
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .interviews-screen {
+        min-height: calc(100vh - 8rem);
+
+        .grid {
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            margin-top: 0;
+        }
+    }
+}
