@@ -56,4 +56,13 @@ export const updateInterviewDocument = async (interviewId, data) => {
     }
 }
 
+export const deleteInterviewDocument = async (interviewId) => {
+    const interviewRef = interviewsCollectionRef.doc(interviewId);
+    try {
+        await interviewRef.delete();
+    } catch (error) {
+        throw error;
+    }
+}
+
 export default firebase;

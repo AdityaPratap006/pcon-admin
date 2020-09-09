@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { getInterviewDocument } from '../../firebase/firebase.utils';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Grid from '../../components/Grid';
@@ -8,10 +8,16 @@ import Card from '../../components/Card';
 import { getLocalDateFromFirebaseTimestamp } from '../../utils/dates';
 import Avatar from '../../components/Avatar';
 import CustomButton from '../../components/CustomButton';
+import { updateInterviewDocument, deleteInterviewDocument } from '../../firebase/firebase.utils';
+import ErrorModal from '../../components/ErrorModal';
+import { navigationRoutes } from '../../navigation/routes';
 
 const InterviewDetailScreen = (props) => {
     const [interview, setInterview] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [updating, setUpdating] = useState(false);
+    const [error, setError] = useState('');
+    const browserHistory = useHistory();
 
     const interviewId = props.match.params.interviewId;
     useEffect(() => {
@@ -47,55 +53,100 @@ const InterviewDetailScreen = (props) => {
         );
     }
 
+    const approveInterview = async () => {
+
+        setUpdating(true);
+
+        try {
+            await updateInterviewDocument(interviewId, { verified: true });
+            browserHistory.push(navigationRoutes.INTERVIEW_EXPERIENCES);
+        } catch (err) {
+            setError(err.message);
+        }
+
+        setUpdating(false);
+    }
+
+    const rejectInterview = async () => {
+
+        setUpdating(true);
+
+        try {
+            await deleteInterviewDocument(interviewId);
+            browserHistory.replace(navigationRoutes.INTERVIEW_EXPERIENCES);
+        } catch (err) {
+            setError(err.message);
+        }
+
+        setUpdating(false);
+    }
+
+    const clearErrorHandler = () => {
+        setError(false);
+    }
+
     return (
-        <div className={styles['interivew-detail-screen']}>
-            <h3>INTERVIEW EXPERIENCE</h3>
-            <Grid className={styles['grid']}>
-                <Card className={styles['company-card']}>
-                    <h2>{interview.companyName}</h2>
-                    <h4>{interview.year}</h4>
-                </Card>
-                <Card className={styles['author-card']}>
-                    <h4>Author</h4>
-                    <div className={styles['content']}>
-                        <Avatar src={interview.user.photoURL} className={styles['avatar']} />
-                        <div className={styles['details']}>
-                            <h2>{interview.user.name}</h2>
-                            <small>{getLocalDateFromFirebaseTimestamp(interview.createdAt)}</small>
-                            <span>{interview.user.email}</span>
-                            <span>{interview.user.registrationNum}</span>
-                            <span>{interview.user.branch}</span>
+        <React.Fragment>
+            <ErrorModal
+                error={error}
+                onClear={clearErrorHandler}
+            />
+            <div className={styles['interivew-detail-screen']}>
+                <h3>INTERVIEW EXPERIENCE</h3>
+                <Grid className={styles['grid']}>
+                    <Card className={styles['company-card']}>
+                        <h2>{interview.companyName}</h2>
+                        <h4>{interview.year}</h4>
+                    </Card>
+                    <Card className={styles['author-card']}>
+                        <h4>Author</h4>
+                        <div className={styles['content']}>
+                            <Avatar src={interview.user.photoURL} className={styles['avatar']} />
+                            <div className={styles['details']}>
+                                <h2>{interview.user.name}</h2>
+                                <small>{getLocalDateFromFirebaseTimestamp(interview.createdAt)}</small>
+                                <span>{interview.user.email}</span>
+                                <span>{interview.user.registrationNum}</span>
+                                <span>{interview.user.branch}</span>
+                            </div>
                         </div>
-                    </div>
-                </Card>
-                <Card className={styles['rounds-card']}>
-                    <p className={styles['question']}>
-                        How many rounds were there? Describe briefly.
+                    </Card>
+                    <Card className={styles['rounds-card']}>
+                        <p className={styles['question']}>
+                            How many rounds were there? Describe briefly.
                     </p>
-                    <p className={styles['answer']}>{interview.roundsDescription}</p>
-                </Card>
-                <Card className={styles['questions-card']}>
-                    <p className={styles['question']}>
-                        What questions were asked? Describe briefly.
+                        <p className={styles['answer']}>{interview.roundsDescription}</p>
+                    </Card>
+                    <Card className={styles['questions-card']}>
+                        <p className={styles['question']}>
+                            What questions were asked? Describe briefly.
                     </p>
-                    <p className={styles['answer']}>{interview.questionsDescription}</p>
-                </Card>
-                <Card className={styles['advice-card']}>
-                    <p className={styles['question']}>
-                        Any advice for future aspirants?
+                        <p className={styles['answer']}>{interview.questionsDescription}</p>
+                    </Card>
+                    <Card className={styles['advice-card']}>
+                        <p className={styles['question']}>
+                            Any advice for future aspirants?
                     </p>
-                    <p className={styles['answer']}>{interview.advice || `No specific advice`}</p>
-                </Card>
-                <Card className={styles['action-card']}>
-                    <CustomButton className={styles['approve-btn']}>
-                        APPROVE
-                    </CustomButton>
-                    <CustomButton className={styles['reject-btn']}>
-                        REJECT
-                    </CustomButton>
-                </Card>
-            </Grid>
-        </div>
+                        <p className={styles['answer']}>{interview.advice || `No specific advice`}</p>
+                    </Card>
+                    <Card className={styles['action-card']}>
+                        {updating && (
+                            <LoadingSpinner />
+                        )}
+                        {!updating && !interview.verified && (
+                            <CustomButton onClick={approveInterview} className={styles['approve-btn']}>
+                                APPROVE
+                            </CustomButton>
+                        )}
+                        {!updating && (
+                            <CustomButton onClick={rejectInterview} className={styles['reject-btn']}>
+                                REJECT
+                            </CustomButton>
+                        )}
+                    </Card>
+                </Grid>
+            </div>
+        </React.Fragment>
     );
 }
 
