@@ -25,9 +25,28 @@
             justify-content: center;
             align-items: center;
             transition: 0.15s ease-in-out;
+            position: relative;
 
             &:hover {
                 box-shadow: 0px 0px 24px 2px $primary;
+            }
+
+            .verified-icon {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 2rem;
+                height: 2rem;
+                color: #1aa260;
+            }
+
+            .unverified-icon {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 2rem;
+                height: 2rem;
+                color: red;
             }
 
             .header {

@@ -8,6 +8,7 @@ import Avatar from '../../components/Avatar';
 import CustomButton from '../../components/CustomButton';
 import { navigationRoutes } from '../../navigation/routes';
 import { getLocalDateFromFirebaseTimestamp } from '../../utils/dates';
+import { GoVerified, GoUnverified } from 'react-icons/go';
 
 const InterviewsScreen = () => {
     const [interviews, setInterviews] = useState([]);
@@ -34,6 +35,12 @@ const InterviewsScreen = () => {
         const localDate = getLocalDateFromFirebaseTimestamp(interview.createdAt);
         return (
             <Card key={interview.id} className={styles['interview-card']}>
+                {interview.verified && (
+                    <GoVerified className={styles['verified-icon']} />
+                )}
+                {!interview.verified && (
+                    <GoUnverified className={styles['unverified-icon']} />
+                )}
                 <div className={styles['header']}>
                     <h2>{interview.companyName}</h2>
                     <span>{localDate}</span>
