@@ -59,12 +59,13 @@ const InterviewDetailScreen = (props) => {
 
         try {
             await updateInterviewDocument(interviewId, { verified: true });
+            setUpdating(false);
             browserHistory.push(navigationRoutes.INTERVIEW_EXPERIENCES);
         } catch (err) {
             setError(err.message);
         }
 
-        setUpdating(false);
+
     }
 
     const rejectInterview = async () => {
@@ -73,12 +74,13 @@ const InterviewDetailScreen = (props) => {
 
         try {
             await deleteInterviewDocument(interviewId);
+            setUpdating(false);
             browserHistory.replace(navigationRoutes.INTERVIEW_EXPERIENCES);
         } catch (err) {
             setError(err.message);
         }
 
-        setUpdating(false);
+
     }
 
     const clearErrorHandler = () => {
