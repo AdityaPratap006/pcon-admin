@@ -45,7 +45,7 @@ const InterviewsScreen = () => {
                     <span className={styles['branch']}>{interview.user?.branch}</span>
                 </div>
                 <div className={styles['footer']}>
-                    <CustomButton to={navigationRoutes.INTERVIEW_EXPERIENCES}>
+                    <CustomButton to={`${navigationRoutes.INTERVIEW_EXPERIENCES}/${interview.id}`}>
                         VIEW
                     </CustomButton>
                 </div>

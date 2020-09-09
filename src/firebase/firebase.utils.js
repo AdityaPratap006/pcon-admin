@@ -31,6 +31,20 @@ export const updateUserProfileDocument = async (userId, data) => {
     }
 }
 
+export const getInterviewDocument = async (interviewId) => {
+    const interviewRef = interviewsCollectionRef.doc(interviewId);
+
+    let interviewData = null;
+    try {
+        const snapshot = await interviewRef.get();
+        interviewData = snapshot.data();
+    } catch (error) {
+        throw error;
+    }
+
+    return interviewData;
+}
+
 export const updateInterviewDocument = async (interviewId, data) => {
     const interviewRef = interviewsCollectionRef.doc(interviewId);
     try {

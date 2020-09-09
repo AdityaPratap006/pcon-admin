@@ -10,6 +10,7 @@ import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
 import UsersScreen from './screens/UsersScreen';
 import InterviewsScreen from './screens/InterviewsScreen';
+import InterviewDetailScreen from './screens/InterviewDetailScreen';
 
 function App() {
   const { checkingAuthState, loggedIn, login, logout } = useAuth();
@@ -34,6 +35,9 @@ function App() {
         <Route exact path={navigationRoutes.INTERVIEW_EXPERIENCES}>
           <InterviewsScreen />
         </Route>
+        <Route exact path={`${navigationRoutes.INTERVIEW_EXPERIENCES}/:interviewId`}>
+          <InterviewDetailScreen />
+        </Route>
         <Redirect to={navigationRoutes.HOME} />
       </Switch>
     );
@@ -51,13 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      <AuthContext.Provider
-        value={{
-          loggedIn,
-          login,
-          logout,
-        }}
-      >
+      <AuthContext.Provider value={{ loggedIn, login, logout }}>
         <Router>
           <MainNavigation />
           <main>
