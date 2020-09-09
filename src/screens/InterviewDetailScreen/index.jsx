@@ -62,6 +62,7 @@ const InterviewDetailScreen = (props) => {
             setUpdating(false);
             browserHistory.push(navigationRoutes.INTERVIEW_EXPERIENCES);
         } catch (err) {
+            setUpdating(false);
             setError(err.message);
         }
 
@@ -77,6 +78,7 @@ const InterviewDetailScreen = (props) => {
             setUpdating(false);
             browserHistory.replace(navigationRoutes.INTERVIEW_EXPERIENCES);
         } catch (err) {
+            setUpdating(false);
             setError(err.message);
         }
 
