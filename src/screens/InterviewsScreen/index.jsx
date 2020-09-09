@@ -7,6 +7,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import Avatar from '../../components/Avatar';
 import CustomButton from '../../components/CustomButton';
 import { navigationRoutes } from '../../navigation/routes';
+import { getLocalDateFromFirebaseTimestamp } from '../../utils/dates';
 
 const InterviewsScreen = () => {
     const [interviews, setInterviews] = useState([]);
@@ -30,7 +31,7 @@ const InterviewsScreen = () => {
 
 
     const renderedInterviews = interviews.map(interview => {
-        const localDate = new Date(interview.createdAt.toDate().toISOString()).toLocaleString();
+        const localDate = getLocalDateFromFirebaseTimestamp(interview.createdAt);
         return (
             <Card key={interview.id} className={styles['interview-card']}>
                 <div className={styles['header']}>
