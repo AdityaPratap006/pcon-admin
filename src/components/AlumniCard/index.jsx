@@ -5,6 +5,7 @@ import Avatar from '../../components/Avatar';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import CustomButton from '../../components/CustomButton';
 import { alumniRef } from '../../firebase/firebase.utils';
+import { SiLinkedin } from 'react-icons/si';
 
 const AlumniCard = (props) => {
     const [updating, setUpdating] = useState(false);
@@ -27,10 +28,12 @@ const AlumniCard = (props) => {
             <Card className={styles['alumni-card']}>
                 <Avatar src={alumni.photoURL} className={styles['avatar']} />
                 <div className={styles['body']}>
-                    <span>{alumni.name}</span>
-                    <span>{alumni.company}</span>
-                    <span>{`Class of ${alumni.batch}`}</span>
-
+                    <span className={styles['name']}>{alumni.name}</span>
+                    <span className={styles['batch']}>{`Class of ${alumni.batch}`}</span>
+                    <span className={styles['company']}>{alumni.company}</span>
+                    <a target="_blank" rel="noopener noreferrer" href={alumni.linkedinURL}>
+                        <SiLinkedin className={styles['linkedin-icon']} />
+                    </a>
                 </div>
                 <div className={styles['footer']}>
                     {!updating && (

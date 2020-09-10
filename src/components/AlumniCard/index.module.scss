@@ -1,34 +1,67 @@
 @import "../../styles/theme";
 
-.alumni-card {
-    height: 18rem;
+.alumni-item {
+    height: 24rem;
     width: 100%;
-    position: relative;
-    overflow: visible;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: flex-end;
 
-    .avatar {
-        width: 8rem;
-        height: 8rem;
-        position: absolute;
-        top: -4rem;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .body {
+    .alumni-card {
+        height: 20rem;
         width: 100%;
-        height: 8rem;
+        position: relative;
+        overflow: visible;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        align-items: flex-start;
+        justify-content: flex-end;
 
-        span {
-            font-size: 0.9rem;
-            color: $primary;
+        .avatar {
+            width: 8rem;
+            height: 8rem;
+            position: absolute;
+            top: -4rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .body {
+            width: 100%;
+            height: 10rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            span {
+                color: $primary;
+            }
+
+            .name {
+                font-size: 1.4rem;
+            }
+
+            .batch {
+                color: $accent;
+                font-size: 1rem;
+            }
+
+            .company {
+                margin-top: 1rem;
+                font-size: 1.8rem;
+            }
+
+            a {
+                text-decoration: none;
+                margin: auto auto 0.5rem auto;
+
+                .linkedin-icon {
+                    width: 2rem;
+                    height: 2rem;
+                    color: $accent;
+                }
+            }
+
         }
     }
 }

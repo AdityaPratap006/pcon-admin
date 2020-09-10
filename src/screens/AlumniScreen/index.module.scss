@@ -36,17 +36,16 @@
     }
 
     .grid {
-        margin-top: 2rem;
-        width: 95%;
+        width: 100%;
         gap: 25px;
+    }
+}
 
-        .alumni-item {
-            height: 22rem;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-
+@media (max-width: 768px) {
+    .alumni-screen {
+        .add-btn {
+            top: 4.5rem;
+            right: 1rem;
         }
     }
 }
