@@ -1,6 +1,6 @@
 @import "../../styles/theme";
 
-.alumini-screen {
+.alumni-screen {
     min-height: calc(100vh - 4rem);
     padding-top: 1rem;
     display: flex;
@@ -40,14 +40,14 @@
         width: 95%;
         gap: 25px;
 
-        .alumini-item {
+        .alumni-item {
             height: 22rem;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: flex-end;
 
-            .alumini-card {
+            .alumni-card {
                 height: 18rem;
                 width: 100%;
                 position: relative;

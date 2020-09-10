@@ -13,8 +13,8 @@ import InterviewsScreen from './screens/InterviewsScreen';
 import InterviewDetailScreen from './screens/InterviewDetailScreen';
 import { firebaseAuth } from './firebase/firebase.utils';
 import ErrorModal from './components/ErrorModal';
-import AluminiScreen from './screens/AluminiScreen';
-import CreateAluminiScreen from './screens/CreateAlumini';
+import AlumniScreen from './screens/AlumniScreen';
+import CreateAlumniScreen from './screens/CreateAlumni';
 
 const adminEmailList = [
   process.env.REACT_APP_ADMIN_1,
@@ -86,10 +86,10 @@ function App() {
           <InterviewDetailScreen />
         </Route>
         <Route exact path={navigationRoutes.ALUMINI}>
-          <AluminiScreen />
+          <AlumniScreen />
         </Route>
         <Route exact path={`${navigationRoutes.ALUMINI}/create`}>
-          <CreateAluminiScreen />
+          <CreateAlumniScreen />
         </Route>
         <Redirect to={navigationRoutes.HOME} />
       </Switch>

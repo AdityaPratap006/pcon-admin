@@ -7,12 +7,12 @@ import Card from '../../components/Card';
 import { FaPlus } from 'react-icons/fa';
 import { navigationRoutes } from '../../navigation/routes';
 
-const AluminiScreen = () => {
+const AlumniScreen = () => {
 
-    const renderedCards = [...Array(10).keys()].map(alumini => {
+    const renderedCards = [...Array(10).keys()].map(alumni => {
         return (
-            <div key={alumini} className={styles['alumini-item']}>
-                <Card className={styles['alumini-card']}>
+            <div key={alumni} className={styles['alumni-item']}>
+                <Card className={styles['alumni-card']}>
 
                 </Card>
             </div>
@@ -20,7 +20,7 @@ const AluminiScreen = () => {
     });
 
     return (
-        <div className={styles['alumini-screen']}>
+        <div className={styles['alumni-screen']}>
             <ScreenTitle>ALUMINI</ScreenTitle>
             <Grid className={styles['grid']}>
                 {renderedCards}
@@ -32,4 +32,4 @@ const AluminiScreen = () => {
     );
 };
 
-export default AluminiScreen;
+export default AlumniScreen;

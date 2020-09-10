@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/database';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCvRpDBkCCpWHIq74vUBGUgjFVzaIzfXwg",
@@ -17,6 +18,7 @@ firebase.initializeApp(firebaseConfig);
 
 export const firebaseAuth = firebase.auth();
 export const firestore = firebase.firestore();
+export const realTimeDB = firebase.database();
 
 export const usersCollectionRef = firestore.collection(`users`);
 export const interviewsCollectionRef = firestore.collection(`interviews`);
@@ -70,5 +72,8 @@ export const deleteInterviewDocument = async (interviewId) => {
         throw error;
     }
 }
+
+
+export const alumniRef = realTimeDB.ref('alumni');
 
 export default firebase;

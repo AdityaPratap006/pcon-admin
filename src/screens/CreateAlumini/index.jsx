@@ -39,7 +39,7 @@ const INITIAL_FORM_STATE = {
     isValid: false,
 };
 
-const CreateAluminiScreen = () => {
+const CreateAlumniScreen = () => {
     const { formState, inputHandler } = useForm(INITIAL_FORM_STATE);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -67,7 +67,7 @@ const CreateAluminiScreen = () => {
             photoURL,
         } = formState.inputs;
 
-        const aluminiData = {
+        const alumniData = {
             company: company.value,
             batch: batch.value,
             name: name.value,
@@ -78,8 +78,8 @@ const CreateAluminiScreen = () => {
 
         try {
             await new Promise(resolve => setTimeout(resolve, 5000));
-            console.log(aluminiData);
-            setSuccess('Alumini created!');
+            console.log(alumniData);
+            setSuccess('Alumni created!');
         } catch (err) {
             setError(err.message);
         }
@@ -98,14 +98,14 @@ const CreateAluminiScreen = () => {
                 error={success}
                 onClear={clearSuccessHandler}
             />
-            <div className={styles['create-alumini-screen']}>
+            <div className={styles['create-alumni-screen']}>
                 <ScreenTitle>
                     CREATE ALUMINI
             </ScreenTitle>
                 <Card className={styles['form-card']}>
                     <form
                         onSubmit={formSubmitHandler}
-                        className={styles['create-alumini-form']}
+                        className={styles['create-alumni-form']}
                     >
                         <CustomInput
                             id="name"
@@ -177,4 +177,4 @@ const CreateAluminiScreen = () => {
     );
 };
 
-export default CreateAluminiScreen;
+export default CreateAlumniScreen;
