@@ -5,7 +5,7 @@ import Card from '../../components/Card';
 import CustomButton from '../../components/CustomButton';
 import { navigationRoutes } from '../../navigation/routes';
 import { IconContext } from 'react-icons';
-import { FaUsers, FaUserTie } from 'react-icons/fa';
+import { FaUsers, FaUserTie, FaUserGraduate } from 'react-icons/fa';
 import { MdNotificationsActive } from 'react-icons/md';
 
 const HomeScreen = () => {
@@ -23,7 +23,7 @@ const HomeScreen = () => {
                         </div>
                         <CustomButton to={navigationRoutes.USERS}>
                             MANAGE
-                    </CustomButton>
+                        </CustomButton>
                     </Card>
                     <Card className={styles['card']}>
                         <div className={styles['body']} style={{ color: '#2196f3' }}>
@@ -32,7 +32,7 @@ const HomeScreen = () => {
                         </div>
                         <CustomButton to={navigationRoutes.INTERVIEW_EXPERIENCES}>
                             MANAGE
-                    </CustomButton>
+                        </CustomButton>
                     </Card>
                     <Card className={styles['card']}>
                         <div className={styles['body']} style={{ color: '#43a047' }}>
@@ -41,7 +41,16 @@ const HomeScreen = () => {
                         </div>
                         <CustomButton to={navigationRoutes.NOTIFICATIONS}>
                             MANAGE
-                    </CustomButton>
+                        </CustomButton>
+                    </Card>
+                    <Card className={styles['card']}>
+                        <div className={styles['body']} style={{ color: '#ef6c00' }}>
+                            <FaUserGraduate />
+                            <h2>ALUMINI</h2>
+                        </div>
+                        <CustomButton to={navigationRoutes.ALUMINI}>
+                            MANAGE
+                        </CustomButton>
                     </Card>
                 </Grid>
             </IconContext.Provider>
