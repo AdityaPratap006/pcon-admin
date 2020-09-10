@@ -6,14 +6,14 @@ const ErrorModal = props => {
     return (
         <Modal
             onCancel={props.onClear}
-            header="An Error Occurred!"
+            header={props.success ? "Successful!" : "An Error Occurred!"}
             show={!!props.error}
             footerContent={
                 <CustomButton onClick={props.onClear}>OK</CustomButton>
             }
         >
             <p style={{
-                color: 'red'
+                color: props.success ? '#1aa260' : 'red'
             }}>{props.error}</p>
         </Modal>
     );

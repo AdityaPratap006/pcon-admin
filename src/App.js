@@ -14,6 +14,7 @@ import InterviewDetailScreen from './screens/InterviewDetailScreen';
 import { firebaseAuth } from './firebase/firebase.utils';
 import ErrorModal from './components/ErrorModal';
 import AluminiScreen from './screens/AluminiScreen';
+import CreateAluminiScreen from './screens/CreateAlumini';
 
 const adminEmailList = [
   process.env.REACT_APP_ADMIN_1,
@@ -86,6 +87,9 @@ function App() {
         </Route>
         <Route exact path={navigationRoutes.ALUMINI}>
           <AluminiScreen />
+        </Route>
+        <Route exact path={`${navigationRoutes.ALUMINI}/create`}>
+          <CreateAluminiScreen />
         </Route>
         <Redirect to={navigationRoutes.HOME} />
       </Switch>

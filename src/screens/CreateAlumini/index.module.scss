@@ -1,0 +1,34 @@
+@import "../../styles/theme";
+
+.create-alumini-screen {
+    min-height: calc(100vh - 4rem);
+    padding: 1rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .form-card {
+        width: 40rem;
+        max-width: 90vw;
+
+        .preview-avatar {
+            margin: 1rem auto 1rem auto;
+            width: 8rem;
+            height: 8rem;
+        }
+
+        .preview-empty {
+            margin: 1rem auto 1rem auto;
+            width: 8rem;
+            height: 8rem;
+            border: 1px solid $primary;
+            border-radius: 50%;
+            font-size: 1rem;
+            color: $primary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
