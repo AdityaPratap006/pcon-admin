@@ -12,6 +12,7 @@ import { navigationRoutes } from '../../navigation/routes';
 import ErrorModal from '../../components/ErrorModal';
 import Avatar from '../../components/Avatar';
 import { yearList } from '../../utils/yearList';
+import { alumniRef } from '../../firebase/firebase.utils';
 
 const INITIAL_FORM_STATE = {
     inputs: {
@@ -75,10 +76,11 @@ const CreateAlumniScreen = () => {
             photoURL: photoURL.value,
         };
 
-
         try {
-            await new Promise(resolve => setTimeout(resolve, 5000));
-            console.log(alumniData);
+            const alumniItemRef = await alumniRef.push();
+            await alumniItemRef.set({
+                ...alumniData,
+            });
             setSuccess('Alumni created!');
         } catch (err) {
             setError(err.message);
