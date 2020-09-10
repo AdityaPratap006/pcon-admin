@@ -1,0 +1,34 @@
+@import "../../styles/theme";
+
+.alumni-card {
+    height: 18rem;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .avatar {
+        width: 8rem;
+        height: 8rem;
+        position: absolute;
+        top: -4rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .body {
+        width: 100%;
+        height: 8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+
+        span {
+            font-size: 0.9rem;
+            color: $primary;
+        }
+    }
+}
