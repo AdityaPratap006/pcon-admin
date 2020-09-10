@@ -1,4 +1,5 @@
 import firebase from 'firebase/app';
+import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
@@ -14,10 +15,15 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+export const firebaseAuth = firebase.auth();
 export const firestore = firebase.firestore();
 
 export const usersCollectionRef = firestore.collection(`users`);
 export const interviewsCollectionRef = firestore.collection(`interviews`);
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ 'prompt': 'select_account' });
+export const signInWithGoogle = () => firebaseAuth.signInWithPopup(provider);
 
 export const updateUserProfileDocument = async (userId, data) => {
 

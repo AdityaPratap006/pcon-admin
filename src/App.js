@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import { useAuth } from './hooks/auth-hook';
+// import { useAuth } from './hooks/auth-hook';
 import { navigationRoutes } from './navigation/routes';
 import { AuthContext } from './contexts/auth-context';
 import MainNavigation from './navigation/MainNavigation';
@@ -11,16 +11,61 @@ import HomeScreen from './screens/HomeScreen';
 import UsersScreen from './screens/UsersScreen';
 import InterviewsScreen from './screens/InterviewsScreen';
 import InterviewDetailScreen from './screens/InterviewDetailScreen';
+import { firebaseAuth } from './firebase/firebase.utils';
+import ErrorModal from './components/ErrorModal';
+
+const adminEmailList = [
+  process.env.REACT_APP_ADMIN_1,
+  process.env.REACT_APP_ADMIN_2,
+];
 
 function App() {
-  const { checkingAuthState, loggedIn, login, logout } = useAuth();
+  const [currentUser, setCurrentUser] = useState(null);
+  const [checkingAuthState, setCheckingAuthState] = useState(true);
+  const [error, setError] = useState('');
+
+  const logout = () => {
+    firebaseAuth.signOut();
+  }
+
+  const clearErrorHandler = () => {
+    setError('');
+  }
+
+
+  useEffect(() => {
+    const unsubscribeAuth = firebaseAuth.onAuthStateChanged(async userData => {
+      if (userData) {
+        if (adminEmailList.includes(userData.email)) {
+          setCurrentUser({
+            email: userData.email,
+            name: userData.displayName,
+            photoURL: userData.photoURL,
+            id: userData.uid,
+          });
+        } else {
+          setError('Sorry! You are not authorized!!');
+          setCurrentUser(null);
+          logout();
+        }
+      } else {
+        setCurrentUser(null);
+      }
+
+      setCheckingAuthState(false);
+    });
+
+    return () => {
+      unsubscribeAuth();
+    };
+  }, []);
 
   if (checkingAuthState) {
     return <SplashScreen />;
   }
 
   let routes;
-  if (loggedIn) {
+  if (currentUser) {
     routes = (
       <Switch>
         <Route exact path={navigationRoutes.HOME}>
@@ -52,18 +97,23 @@ function App() {
     );
   }
 
-
   return (
-    <div className="App">
-      <AuthContext.Provider value={{ loggedIn, login, logout }}>
-        <Router>
-          <MainNavigation />
-          <main>
-            {routes}
-          </main>
-        </Router>
-      </AuthContext.Provider>
-    </div>
+    <React.Fragment>
+      <ErrorModal
+        error={error}
+        onClear={clearErrorHandler}
+      />
+      <div className="App">
+        <AuthContext.Provider value={{ user: currentUser, logout: logout }}>
+          <Router>
+            <MainNavigation />
+            <main>
+              {routes}
+            </main>
+          </Router>
+        </AuthContext.Provider>
+      </div>
+    </React.Fragment>
   );
 }
 

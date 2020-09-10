@@ -22,7 +22,7 @@ const MainNavigation = () => {
                 </section>
                 <section className={styles['right-section']}>
                     {
-                        auth.loggedIn && (
+                        auth.user && (
                             <CustomButton
                                 onClick={auth.logout}
                                 light
