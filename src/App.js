@@ -16,6 +16,7 @@ import ErrorModal from './components/ErrorModal';
 import AlumniScreen from './screens/AlumniScreen';
 import CreateAlumniScreen from './screens/CreateAlumni';
 import AchievementsScreen from './screens/AchievementsScreen';
+import CreateAchievementScreen from './screens/CreateAchievementScreen';
 
 const adminEmailList = [
   process.env.REACT_APP_ADMIN_1,
@@ -96,7 +97,7 @@ function App() {
           <AchievementsScreen />
         </Route>
         <Route exact path={`${navigationRoutes.ACHIEVEMENTS}/create`}>
-          <h1>ACHIEVEMENTS CREATE</h1>
+          <CreateAchievementScreen />
         </Route>
         <Redirect to={navigationRoutes.HOME} />
       </Switch>

@@ -6,35 +6,33 @@ import Card from '../../components/Card';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 import { useForm } from '../../hooks/form-hook';
-import { VALIDATOR_REQUIRE } from '../../utils/validators';
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH } from '../../utils/validators';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { navigationRoutes } from '../../navigation/routes';
 import ErrorModal from '../../components/ErrorModal';
-import Avatar from '../../components/Avatar';
-import { getYearList } from '../../utils/dateList';
-import { alumniRef } from '../../firebase/firebase.utils';
+import { getYearList, monthListWithNull } from '../../utils/dateList';
 
-const yearList = getYearList(2016);
+const yearList = getYearList(2014);
 
 const INITIAL_FORM_STATE = {
     inputs: {
-        name: {
+        title: {
             value: "",
             isValid: false,
         },
-        batch: {
+        content: {
             value: "",
             isValid: false,
         },
-        company: {
+        month: {
             value: "",
             isValid: false,
         },
-        linkedinURL: {
+        year: {
             value: "",
             isValid: false,
         },
-        photoURL: {
+        location: {
             value: "",
             isValid: false,
         },
@@ -42,7 +40,7 @@ const INITIAL_FORM_STATE = {
     isValid: false,
 };
 
-const CreateAlumniScreen = () => {
+const CreateAchievementScreen = () => {
     const { formState, inputHandler } = useForm(INITIAL_FORM_STATE);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -55,40 +53,11 @@ const CreateAlumniScreen = () => {
 
     const clearSuccessHandler = () => {
         setSuccess('');
-        history.push(navigationRoutes.ALUMINI);
+        history.push(navigationRoutes.ACHIEVEMENTS);
     }
 
     const formSubmitHandler = async (event) => {
         event.preventDefault();
-        setLoading(true);
-
-        const {
-            company,
-            batch,
-            name,
-            linkedinURL,
-            photoURL,
-        } = formState.inputs;
-
-        const alumniData = {
-            company: company.value,
-            batch: batch.value,
-            name: name.value,
-            linkedinURL: linkedinURL.value,
-            photoURL: photoURL.value,
-        };
-
-        try {
-            const alumniItemRef = await alumniRef.push();
-            await alumniItemRef.set({
-                ...alumniData,
-            });
-            setSuccess('Alumni created!');
-        } catch (err) {
-            setError(err.message);
-        }
-
-        setLoading(false);
     }
 
     return (
@@ -102,27 +71,27 @@ const CreateAlumniScreen = () => {
                 error={success}
                 onClear={clearSuccessHandler}
             />
-            <div className={styles['create-alumni-screen']}>
+            <div className={styles['create-achievement-screen']}>
                 <ScreenTitle>
-                    CREATE ALUMINI
+                    CREATE ACHIEVEMENT
             </ScreenTitle>
                 <Card className={styles['form-card']}>
                     <form
                         onSubmit={formSubmitHandler}
-                        className={styles['create-alumni-form']}
+                        className={styles['create-achievement-form']}
                     >
                         <CustomInput
-                            id="name"
+                            id="title"
                             type="text"
-                            label="Name"
+                            label="Title"
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText={"Required"}
                             getInput={inputHandler}
                         />
                         <CustomInput
                             element="select"
-                            id="batch"
-                            label="Year of Graduation"
+                            id="year"
+                            label="Year"
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText={"Required"}
                             getInput={inputHandler}
@@ -131,43 +100,24 @@ const CreateAlumniScreen = () => {
                             initialValidity={true}
                         />
                         <CustomInput
-                            id="company"
-                            type="text"
-                            label="Current Company"
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText={"Required"}
+                            element="select"
+                            id="month"
+                            label="Month (OPTIONAL)"
+                            validators={[]}
                             getInput={inputHandler}
+                            optionList={monthListWithNull}
+                            initialValue={monthListWithNull[0].value}
+                            initialValidity={true}
                         />
                         <CustomInput
-                            id="linkedinURL"
-                            type="text"
-                            label="LinkedIn URL"
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText={"Required"}
+                            element="textarea"
+                            rows={5}
+                            id="content"
+                            label="Content"
+                            validators={[VALIDATOR_MINLENGTH(40), VALIDATOR_MAXLENGTH(600)]}
+                            errorText={"Should be atleast 40 characters and atmost 600 characters"}
                             getInput={inputHandler}
                         />
-                        <CustomInput
-                            id="photoURL"
-                            type="text"
-                            label="Profile Picture URL (from LinkedIn Profile)"
-                            validators={[VALIDATOR_REQUIRE()]}
-                            errorText={"Required"}
-                            getInput={inputHandler}
-                        />
-                        {
-                            formState.inputs.photoURL.isValid
-                                && formState.inputs.photoURL.value
-                                ? (
-                                    <Avatar
-                                        src={formState.inputs.photoURL.value}
-                                        className={styles['preview-avatar']}
-                                    />
-                                ) : (
-                                    <div className={styles['preview-empty']}>
-                                        PROFILE PIC PREVIEW
-                                    </div>
-                                )
-                        }
                         {!loading && (
                             <CustomButton type="submit" disabled={!formState.isValid}>
                                 CREATE
@@ -179,6 +129,6 @@ const CreateAlumniScreen = () => {
             </div>
         </React.Fragment>
     );
-};
+}
 
-export default CreateAlumniScreen;
+export default CreateAchievementScreen;
