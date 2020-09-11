@@ -34,12 +34,18 @@ p {
             h2 {
                 color: $primary;
                 font-size: 3rem;
-                margin: 0.2rem;
+                margin: 0.2rem 0;
             }
 
             h4 {
                 color: $primary;
                 font-size: 2.2rem;
+                margin: 0;
+            }
+
+            h5 {
+                color: $accent;
+                font-size: 1rem;
                 margin: 0;
             }
         }
