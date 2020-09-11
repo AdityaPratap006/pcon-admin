@@ -11,6 +11,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import { navigationRoutes } from '../../navigation/routes';
 import ErrorModal from '../../components/ErrorModal';
 import { getYearList, monthListWithNull } from '../../utils/dateList';
+import { achievementsRef } from '../../firebase/firebase.utils';
 
 const yearList = getYearList(2014);
 
@@ -58,6 +59,35 @@ const CreateAchievementScreen = () => {
 
     const formSubmitHandler = async (event) => {
         event.preventDefault();
+        setLoading(true);
+
+        const {
+            title,
+            content,
+            month,
+            year,
+            location,
+        } = formState.inputs;
+
+        const achievementData = {
+            title: title.value,
+            content: content.value,
+            month: month.value,
+            year: year.value,
+            location: location.value,
+        };
+
+        try {
+            const achievementItemRef = await achievementsRef.push();
+            await achievementItemRef.set({
+                ...achievementData,
+            });
+            setSuccess('Achievement created!');
+        } catch (err) {
+            setError(err.message);
+        }
+
+        setLoading(false);
     }
 
     return (
@@ -87,6 +117,15 @@ const CreateAchievementScreen = () => {
                             validators={[VALIDATOR_REQUIRE()]}
                             errorText={"Required"}
                             getInput={inputHandler}
+                        />
+                        <CustomInput
+                            id="location"
+                            type="text"
+                            label="Location (OPTIONAL)"
+                            validators={[]}
+                            getInput={inputHandler}
+                            initialValue={''}
+                            initialValidity={true}
                         />
                         <CustomInput
                             element="select"
