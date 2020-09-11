@@ -15,6 +15,7 @@ import { firebaseAuth } from './firebase/firebase.utils';
 import ErrorModal from './components/ErrorModal';
 import AlumniScreen from './screens/AlumniScreen';
 import CreateAlumniScreen from './screens/CreateAlumni';
+import AchievementsScreen from './screens/AchievementsScreen';
 
 const adminEmailList = [
   process.env.REACT_APP_ADMIN_1,
@@ -90,6 +91,12 @@ function App() {
         </Route>
         <Route exact path={`${navigationRoutes.ALUMINI}/create`}>
           <CreateAlumniScreen />
+        </Route>
+        <Route exact path={`${navigationRoutes.ACHIEVEMENTS}`}>
+          <AchievementsScreen />
+        </Route>
+        <Route exact path={`${navigationRoutes.ACHIEVEMENTS}/create`}>
+          <h1>ACHIEVEMENTS CREATE</h1>
         </Route>
         <Redirect to={navigationRoutes.HOME} />
       </Switch>

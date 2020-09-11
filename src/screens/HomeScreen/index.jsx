@@ -7,6 +7,7 @@ import { navigationRoutes } from '../../navigation/routes';
 import { IconContext } from 'react-icons';
 import { FaUsers, FaUserTie, FaUserGraduate } from 'react-icons/fa';
 import { MdNotificationsActive } from 'react-icons/md';
+import { BsFillStarFill } from 'react-icons/bs';
 
 const HomeScreen = () => {
     return (
@@ -49,6 +50,15 @@ const HomeScreen = () => {
                             <h2>ALUMINI</h2>
                         </div>
                         <CustomButton to={navigationRoutes.ALUMINI}>
+                            MANAGE
+                        </CustomButton>
+                    </Card>
+                    <Card className={styles['card']}>
+                        <div className={styles['body']} style={{ color: '#ffc107' }}>
+                            <BsFillStarFill />
+                            <h2>ACHIEVEMENTS</h2>
+                        </div>
+                        <CustomButton to={navigationRoutes.ACHIEVEMENTS}>
                             MANAGE
                         </CustomButton>
                     </Card>

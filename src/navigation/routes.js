@@ -5,4 +5,5 @@ export const navigationRoutes = {
     NOTIFICATIONS: '/notifications',
     INTERVIEW_EXPERIENCES: '/interview_experiences',
     ALUMINI: '/alumni',
+    ACHIEVEMENTS: '/achievements',
 };
