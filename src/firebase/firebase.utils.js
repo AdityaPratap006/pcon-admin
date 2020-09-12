@@ -76,5 +76,6 @@ export const deleteInterviewDocument = async (interviewId) => {
 
 export const alumniRef = realTimeDB.ref().child('alumni');
 export const achievementsRef = realTimeDB.ref().child('achievements');
+export const eventsRef = realTimeDB.ref().child('events');
 
 export default firebase;

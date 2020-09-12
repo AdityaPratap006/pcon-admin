@@ -5,7 +5,8 @@ const VALIDATOR_TYPE_MIN = 'MIN';
 const VALIDATOR_TYPE_MAX = 'MAX';
 const VALIDATOR_TYPE_EMAIL = 'EMAIL';
 const VALIDATOR_TYPE_FILE = 'FILE';
-const VALIDATOR_TYPR_VALUE = 'VALUE';
+const VALIDATOR_TYPE_VALUE = 'VALUE';
+const VALIDATOR_TYPE_URL = 'URL';
 
 export const VALIDATOR_REQUIRE = () => ({ type: VALIDATOR_TYPE_REQUIRE });
 export const VALIDATOR_FILE = () => ({ type: VALIDATOR_TYPE_FILE });
@@ -20,7 +21,8 @@ export const VALIDATOR_MAXLENGTH = val => ({
 export const VALIDATOR_MIN = val => ({ type: VALIDATOR_TYPE_MIN, val: val });
 export const VALIDATOR_MAX = val => ({ type: VALIDATOR_TYPE_MAX, val: val });
 export const VALIDATOR_EMAIL = () => ({ type: VALIDATOR_TYPE_EMAIL });
-export const VALIDATOR_VALUE = val => ({ type: VALIDATOR_TYPR_VALUE, val: val });
+export const VALIDATOR_VALUE = val => ({ type: VALIDATOR_TYPE_VALUE, val: val });
+export const VALIDATOR_URL = () => ({ type: VALIDATOR_TYPE_URL })
 
 export const validate = (value, validators) => {
   let isValid = true;
@@ -43,9 +45,22 @@ export const validate = (value, validators) => {
     if (validator.type === VALIDATOR_TYPE_EMAIL) {
       isValid = isValid && /^\S+@\S+\.\S+$/.test(value);
     }
-    if (validator.type === VALIDATOR_TYPR_VALUE) {
+    if (validator.type === VALIDATOR_TYPE_VALUE) {
       isValid = isValid && value === validator.val;
+    }
+    if (validator.type === VALIDATOR_TYPE_URL) {
+      isValid = isValid && isValidURL(value);
     }
   }
   return isValid;
 };
+
+function isValidURL(str) {
+  const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+    '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+  return !!pattern.test(str);
+}

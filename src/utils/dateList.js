@@ -1,6 +1,6 @@
 const currentYear = new Date(Date.now()).getFullYear();
 
-export const getYearList = (startYear, endYear = currentYear) => {
+export const getYearList = (startYear = currentYear, endYear = currentYear) => {
     const yearList = [];
 
     for (let year = startYear; year <= endYear; ++year) {

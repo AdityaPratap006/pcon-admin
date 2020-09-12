@@ -7,7 +7,7 @@ import { navigationRoutes } from '../../navigation/routes';
 import { IconContext } from 'react-icons';
 import { FaUsers, FaUserTie, FaUserGraduate } from 'react-icons/fa';
 import { MdNotificationsActive } from 'react-icons/md';
-import { BsFillStarFill } from 'react-icons/bs';
+import { BsFillStarFill, BsFillCalendarFill } from 'react-icons/bs';
 
 const HomeScreen = () => {
     return (
@@ -59,6 +59,15 @@ const HomeScreen = () => {
                             <h2>ACHIEVEMENTS</h2>
                         </div>
                         <CustomButton to={navigationRoutes.ACHIEVEMENTS}>
+                            MANAGE
+                        </CustomButton>
+                    </Card>
+                    <Card className={styles['card']}>
+                        <div className={styles['body']} style={{ color: '#673ab7' }}>
+                            <BsFillCalendarFill />
+                            <h2>EVENTS</h2>
+                        </div>
+                        <CustomButton to={navigationRoutes.EVENTS}>
                             MANAGE
                         </CustomButton>
                     </Card>

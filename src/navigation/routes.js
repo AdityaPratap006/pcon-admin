@@ -6,4 +6,5 @@ export const navigationRoutes = {
     INTERVIEW_EXPERIENCES: '/interview_experiences',
     ALUMINI: '/alumni',
     ACHIEVEMENTS: '/achievements',
+    EVENTS: '/events',
 };
