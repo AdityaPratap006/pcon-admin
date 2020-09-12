@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 import { useHistory } from 'react-router-dom';
-import ScreenTitle from '../../components/ScreenTitle';
-import Card from '../../components/Card';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import { useForm } from '../../hooks/form-hook';
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH } from '../../utils/validators';
-import LoadingSpinner from '../../components/LoadingSpinner';
-import { navigationRoutes } from '../../navigation/routes';
-import ErrorModal from '../../components/ErrorModal';
-import { getYearList, monthListWithNull } from '../../utils/dateList';
-import { achievementsRef } from '../../firebase/firebase.utils';
+import ScreenTitle from '../../../components/ScreenTitle';
+import Card from '../../../components/Card';
+import CustomInput from '../../../components/CustomInput';
+import CustomButton from '../../../components/CustomButton';
+import { useForm } from '../../../hooks/form-hook';
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH, VALIDATOR_MAXLENGTH } from '../../../utils/validators';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import { navigationRoutes } from '../../../navigation/routes';
+import ErrorModal from '../../../components/ErrorModal';
+import { getYearList, monthListWithNull } from '../../../utils/dateList';
+import { achievementsRef } from '../../../firebase/firebase.utils';
 
 const yearList = getYearList(2014);
 

@@ -16,7 +16,7 @@ import ErrorModal from './components/ErrorModal';
 import AlumniScreen from './screens/Alumni/AlumniScreen';
 import CreateAlumniScreen from './screens/Alumni/CreateAlumni';
 import AchievementsScreen from './screens/Achievements/AchievementsScreen';
-import CreateAchievementScreen from './screens/CreateAchievementScreen';
+import CreateAchievementScreen from './screens/Achievements/CreateAchievementScreen';
 import EventsScreen from './screens/Events/EventsScreen';
 import CreateEventScreen from './screens/Events/CreateEventScreen';
 
