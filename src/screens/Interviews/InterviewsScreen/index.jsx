@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from './index.module.scss';
-import Grid from '../../components/Grid';
-import Card from '../../components/Card';
-import { interviewsCollectionRef } from '../../firebase/firebase.utils';
-import LoadingSpinner from '../../components/LoadingSpinner';
-import Avatar from '../../components/Avatar';
-import CustomButton from '../../components/CustomButton';
-import { navigationRoutes } from '../../navigation/routes';
-import { getLocalDateFromFirebaseTimestamp } from '../../utils/dates';
+import Grid from '../../../components/Grid';
+import Card from '../../../components/Card';
+import { interviewsCollectionRef } from '../../../firebase/firebase.utils';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import Avatar from '../../../components/Avatar';
+import CustomButton from '../../../components/CustomButton';
+import { navigationRoutes } from '../../../navigation/routes';
+import { getLocalDateFromFirebaseTimestamp } from '../../../utils/dates';
 import { GoVerified, GoUnverified } from 'react-icons/go';
 
 const InterviewsScreen = () => {

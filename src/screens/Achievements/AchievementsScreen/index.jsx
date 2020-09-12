@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from './index.module.scss';
 import { Link } from 'react-router-dom';
-import ScreenTitle from '../../components/ScreenTitle';
-import Grid from '../../components/Grid';
-import Card from '../../components/Card';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import ScreenTitle from '../../../components/ScreenTitle';
+import Grid from '../../../components/Grid';
+import Card from '../../../components/Card';
+import LoadingSpinner from '../../../components/LoadingSpinner';
 import { FaPlus } from 'react-icons/fa';
-import { navigationRoutes } from '../../navigation/routes';
-import { achievementsRef } from '../../firebase/firebase.utils';
+import { navigationRoutes } from '../../../navigation/routes';
+import { achievementsRef } from '../../../firebase/firebase.utils';
 
 function compareAchievements(achievement1, achievement2) {
 

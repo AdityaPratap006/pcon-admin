@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './index.module.scss';
-import Grid from '../../components/Grid';
-import Card from '../../components/Card';
-import UserCard from '../../components/UserCard';
-import { usersCollectionRef, updateUserProfileDocument } from '../../firebase/firebase.utils';
-import LoadingSpinner from '../../components/LoadingSpinner';
-import ErrorModal from '../../components/ErrorModal';
+import Grid from '../../../components/Grid';
+import Card from '../../../components/Card';
+import UserCard from '../../../components/UserCard';
+import { usersCollectionRef, updateUserProfileDocument } from '../../../firebase/firebase.utils';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import ErrorModal from '../../../components/ErrorModal';
 
 const UsersScreen = () => {
     const [users, setUsers] = useState([]);

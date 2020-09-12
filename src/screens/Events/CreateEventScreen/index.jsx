@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import styles from './index.module.scss';
 import { useHistory } from 'react-router-dom';
-import { useForm } from '../../hooks/form-hook';
-import { navigationRoutes } from '../../navigation/routes';
-import ScreenTitle from '../../components/ScreenTitle';
-import Card from '../../components/Card';
-import LoadingSpinner from '../../components/LoadingSpinner';
-import ErrorModal from '../../components/ErrorModal';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL } from '../../utils/validators';
-import { monthListWithNull, getYearList } from '../../utils/dateList';
-import { eventsRef } from '../../firebase/firebase.utils';
+import { useForm } from '../../../hooks/form-hook';
+import { navigationRoutes } from '../../../navigation/routes';
+import ScreenTitle from '../../../components/ScreenTitle';
+import Card from '../../../components/Card';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import ErrorModal from '../../../components/ErrorModal';
+import CustomInput from '../../../components/CustomInput';
+import CustomButton from '../../../components/CustomButton';
+import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH, VALIDATOR_URL } from '../../../utils/validators';
+import { monthListWithNull, getYearList } from '../../../utils/dateList';
+import { eventsRef } from '../../../firebase/firebase.utils';
 
 const yearList = getYearList();
 

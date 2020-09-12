@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import { withRouter, useHistory } from 'react-router-dom';
-import { getInterviewDocument } from '../../firebase/firebase.utils';
-import LoadingSpinner from '../../components/LoadingSpinner';
-import Grid from '../../components/Grid';
-import Card from '../../components/Card';
-import { getLocalDateFromFirebaseTimestamp } from '../../utils/dates';
-import Avatar from '../../components/Avatar';
-import CustomButton from '../../components/CustomButton';
-import { updateInterviewDocument, deleteInterviewDocument } from '../../firebase/firebase.utils';
-import ErrorModal from '../../components/ErrorModal';
-import { navigationRoutes } from '../../navigation/routes';
+import { getInterviewDocument } from '../../../firebase/firebase.utils';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import Grid from '../../../components/Grid';
+import Card from '../../../components/Card';
+import { getLocalDateFromFirebaseTimestamp } from '../../../utils/dates';
+import Avatar from '../../../components/Avatar';
+import CustomButton from '../../../components/CustomButton';
+import { updateInterviewDocument, deleteInterviewDocument } from '../../../firebase/firebase.utils';
+import ErrorModal from '../../../components/ErrorModal';
+import { navigationRoutes } from '../../../navigation/routes';
 
 const InterviewDetailScreen = (props) => {
     const [interview, setInterview] = useState(null);

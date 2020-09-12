@@ -8,17 +8,17 @@ import MainNavigation from './navigation/MainNavigation';
 import AuthScreen from './screens/AuthScreen';
 import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
-import UsersScreen from './screens/UsersScreen';
-import InterviewsScreen from './screens/InterviewsScreen';
-import InterviewDetailScreen from './screens/InterviewDetailScreen';
+import UsersScreen from './screens/Users/UsersScreen';
+import InterviewsScreen from './screens/Interviews/InterviewsScreen';
+import InterviewDetailScreen from './screens/Interviews/InterviewDetailScreen';
 import { firebaseAuth } from './firebase/firebase.utils';
 import ErrorModal from './components/ErrorModal';
-import AlumniScreen from './screens/AlumniScreen';
-import CreateAlumniScreen from './screens/CreateAlumni';
-import AchievementsScreen from './screens/AchievementsScreen';
+import AlumniScreen from './screens/Alumni/AlumniScreen';
+import CreateAlumniScreen from './screens/Alumni/CreateAlumni';
+import AchievementsScreen from './screens/Achievements/AchievementsScreen';
 import CreateAchievementScreen from './screens/CreateAchievementScreen';
-import EventsScreen from './screens/EventsScreen';
-import CreateEventScreen from './screens/CreateEventScreen';
+import EventsScreen from './screens/Events/EventsScreen';
+import CreateEventScreen from './screens/Events/CreateEventScreen';
 
 const adminEmailList = [
   process.env.REACT_APP_ADMIN_1,
