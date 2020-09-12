@@ -3,12 +3,11 @@ import styles from './index.module.scss';
 import { Link } from 'react-router-dom';
 import ScreenTitle from '../../../components/ScreenTitle';
 import Grid from '../../../components/Grid';
-import Card from '../../../components/Card';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import { FaPlus } from 'react-icons/fa';
 import { navigationRoutes } from '../../../navigation/routes';
 import { eventsRef } from '../../../firebase/firebase.utils';
-import CustomButton from '../../../components/CustomButton';
+import EventCard from '../../../components/EventCard';
 
 const EventsScreen = () => {
     const [events, setEvents] = useState([]);
@@ -45,16 +44,10 @@ const EventsScreen = () => {
 
     const renderedCards = events.map(ev => {
         return (
-            <Card key={ev.id} className={styles['event-card']}>
-                <h3 className={styles['title']}>{ev.title}</h3>
-                <div className={styles['info']}>
-                    <span className={styles['date']}>{ev.month} {ev.year}</span>
-                </div>
-                <p className={styles['content']}>{ev.content}</p>
-                <a target="_blank" rel="noopener noreferrer" href={ev.link}>
-                    <CustomButton>VIEW MORE</CustomButton>
-                </a>
-            </Card>
+            <EventCard
+                key={ev.id}
+                event={ev}
+            />
         );
     });
 
