@@ -19,6 +19,8 @@ import AchievementsScreen from './screens/Achievements/AchievementsScreen';
 import CreateAchievementScreen from './screens/Achievements/CreateAchievementScreen';
 import EventsScreen from './screens/Events/EventsScreen';
 import CreateEventScreen from './screens/Events/CreateEventScreen';
+import TeamScreen from './screens/Team/TeamScreen';
+import CreateTeamScreen from './screens/Team/CreateTeamScreen';
 
 const adminEmailList = [
   process.env.REACT_APP_ADMIN_1,
@@ -106,6 +108,12 @@ function App() {
         </Route>
         <Route exact path={`${navigationRoutes.EVENTS}/create`}>
           <CreateEventScreen />
+        </Route>
+        <Route exact path={`${navigationRoutes.TEAM}`}>
+          <TeamScreen />
+        </Route>
+        <Route exact path={`${navigationRoutes.TEAM}/create`}>
+          <CreateTeamScreen />
         </Route>
         <Redirect to={navigationRoutes.HOME} />
       </Switch>

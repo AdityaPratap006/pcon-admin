@@ -7,4 +7,5 @@ export const navigationRoutes = {
     ALUMINI: '/alumni',
     ACHIEVEMENTS: '/achievements',
     EVENTS: '/events',
+    TEAM: '/team',
 };

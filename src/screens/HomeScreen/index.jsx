@@ -5,7 +5,7 @@ import Card from '../../components/Card';
 import CustomButton from '../../components/CustomButton';
 import { navigationRoutes } from '../../navigation/routes';
 import { IconContext } from 'react-icons';
-import { FaUsers, FaUserTie, FaUserGraduate } from 'react-icons/fa';
+import { FaUserAlt, FaUsers, FaUserTie, FaUserGraduate } from 'react-icons/fa';
 import { MdNotificationsActive } from 'react-icons/md';
 import { BsFillStarFill, BsFillCalendarFill } from 'react-icons/bs';
 
@@ -19,7 +19,7 @@ const HomeScreen = () => {
                 <Grid className={styles['grid']}>
                     <Card className={styles['card']}>
                         <div className={styles['body']} style={{ color: '#9c27b0' }}>
-                            <FaUsers />
+                            <FaUserAlt />
                             <h2>USERS</h2>
                         </div>
                         <CustomButton to={navigationRoutes.USERS}>
@@ -68,6 +68,15 @@ const HomeScreen = () => {
                             <h2>EVENTS</h2>
                         </div>
                         <CustomButton to={navigationRoutes.EVENTS}>
+                            MANAGE
+                        </CustomButton>
+                    </Card>
+                    <Card className={styles['card']}>
+                        <div className={styles['body']} style={{ color: '#ad1457' }}>
+                            <FaUsers />
+                            <h2>TEAM</h2>
+                        </div>
+                        <CustomButton to={navigationRoutes.TEAM}>
                             MANAGE
                         </CustomButton>
                     </Card>
