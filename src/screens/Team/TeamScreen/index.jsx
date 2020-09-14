@@ -83,6 +83,12 @@ const TeamScreen = () => {
         );
     });
 
+    const renderedPreFinalYearMembers = teamMembers.filter(member => member.type === "Pre-Final Year").map(member => {
+        return (
+            <TeamCard key={member.id} teamMember={member} />
+        );
+    });
+
     return (
         <div className={styles['team-screen']}>
             <ScreenTitle>TEAM</ScreenTitle>
@@ -94,11 +100,19 @@ const TeamScreen = () => {
                     {renderedFacultyMembers}
                 </Grid>
             )}
-            {!loading && (
+            {!loading && (renderedFinalYearMembers.length > 0) && (
                 <>
                     <ScreenTitle>Final Year</ScreenTitle>
                     <Grid className={styles['grid']}>
                         {renderedFinalYearMembers}
+                    </Grid>
+                </>
+            )}
+            {!loading && (renderedPreFinalYearMembers.length > 0) && (
+                <>
+                    <ScreenTitle>Pre-Final Year</ScreenTitle>
+                    <Grid className={styles['grid']}>
+                        {renderedPreFinalYearMembers}
                     </Grid>
                 </>
             )}
