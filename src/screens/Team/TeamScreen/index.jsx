@@ -9,6 +9,34 @@ import { teamRef } from '../../../firebase/firebase.utils';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import TeamCard from '../../../components/TeamCard';
 
+const heirarchyMap = {
+    'President': 1,
+    'General Secretary': 2,
+    'Technical Secretary': 3,
+    'Treasurer': 4,
+    'Member': 5,
+};
+
+function comapareFinalYearGuys(member1, member2) {
+    if (member1.role === 'Member' && member2.role === 'Member') {
+        return member1.name < member2.name ? -1 : 1;
+    } else {
+        return heirarchyMap[member1.role] - heirarchyMap[member2.role];
+    }
+}
+
+function compareTeamMembers(member1, member2) {
+    if (member1.type === 'Faculty') {
+        return -1;
+    } else if (member1.type === 'Final Year' && member2.type === 'Pre-Final Year') {
+        return -1;
+    } else if (member1.type === 'Final Year' && member2.type === 'Final Year') {
+        return comapareFinalYearGuys(member1, member2);
+    } else {
+        return member1.name < member2.name ? -1 : 1;
+    }
+}
+
 const TeamScreen = () => {
     const [teamMembers, setTeamMembers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -26,6 +54,8 @@ const TeamScreen = () => {
                         ...snapshot.val()
                     });
                 });
+
+                teamList.sort(compareTeamMembers);
 
                 setTeamMembers(teamList);
                 setLoading(false);
@@ -60,7 +90,7 @@ const TeamScreen = () => {
                 <LoadingSpinner />
             )}
             {!loading && (
-                <Grid>
+                <Grid className={styles['grid-faculty']}>
                     {renderedFacultyMembers}
                 </Grid>
             )}

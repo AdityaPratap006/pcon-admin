@@ -36,13 +36,25 @@
     }
 
     .grid-faculty {
-        width: 50rem;
-        max-width: 90vw;
+        // grid-template-columns: minmax(300px, 1fr);
+        justify-content: center;
+        width: 300px;
+        max-width: 100%;
         gap: 25px;
+
     }
 
     .grid {
         width: 100%;
         gap: 25px;
+    }
+}
+
+@media (max-width: 645px) {
+    .team-screen {
+        .grid-faculty {
+            width: 600px;
+            max-width: 100%;
+        }
     }
 }
