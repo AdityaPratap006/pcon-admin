@@ -11,6 +11,7 @@ import LoadingSpinner from '../../../components/LoadingSpinner';
 import { navigationRoutes } from '../../../navigation/routes';
 import ErrorModal from '../../../components/ErrorModal';
 import Avatar from '../../../components/Avatar';
+import { teamRef } from '../../../firebase/firebase.utils';
 
 const INITIAL_FORM_STATE = {
     inputs: {
@@ -125,7 +126,10 @@ const CreateTeamScreen = () => {
         };
 
         try {
-            console.log(memberData);
+            const teamMemberRef = await teamRef.push();
+            teamMemberRef.set({
+                ...memberData,
+            })
             setSuccess('Team Member created!');
         } catch (err) {
             setError(err.message);
