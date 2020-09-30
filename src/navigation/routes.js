@@ -8,4 +8,5 @@ export const navigationRoutes = {
     ACHIEVEMENTS: '/achievements',
     EVENTS: '/events',
     TEAM: '/team',
+    PROJECTS: '/projects',
 };

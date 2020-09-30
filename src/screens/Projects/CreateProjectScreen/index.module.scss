@@ -1,0 +1,15 @@
+@import "../../../styles/theme";
+
+.create-project-screen {
+    min-height: calc(100vh - 4rem);
+    padding: 1rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .form-card {
+        width: 40rem;
+        max-width: 90vw;
+    }
+}

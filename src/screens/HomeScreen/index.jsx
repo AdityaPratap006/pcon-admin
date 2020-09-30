@@ -8,6 +8,7 @@ import { IconContext } from 'react-icons';
 import { FaUserAlt, FaUsers, FaUserTie, FaUserGraduate } from 'react-icons/fa';
 import { MdNotificationsActive } from 'react-icons/md';
 import { BsFillStarFill, BsFillCalendarFill } from 'react-icons/bs';
+import { SiMoleculer } from 'react-icons/si';
 
 const HomeScreen = () => {
     return (
@@ -77,6 +78,15 @@ const HomeScreen = () => {
                             <h2>TEAM</h2>
                         </div>
                         <CustomButton to={navigationRoutes.TEAM}>
+                            MANAGE
+                        </CustomButton>
+                    </Card>
+                    <Card className={styles['card']}>
+                        <div className={styles['body']} style={{ color: '#009688' }}>
+                            <SiMoleculer />
+                            <h2>PROJECTS</h2>
+                        </div>
+                        <CustomButton to={navigationRoutes.PROJECTS}>
                             MANAGE
                         </CustomButton>
                     </Card>
