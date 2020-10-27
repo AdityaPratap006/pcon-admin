@@ -106,8 +106,8 @@ const CreateNotificationScreen = () => {
                             rows={3}
                             id="content"
                             label="Content"
-                            validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(100)]}
-                            errorText={"Should be atleast 10 characters and atmost 100 characters"}
+                            validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(500)]}
+                            errorText={"Should be atleast 10 characters and atmost 500 characters"}
                             getInput={inputHandler}
                         />
                         {!loading && (
