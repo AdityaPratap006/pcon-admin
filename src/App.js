@@ -29,6 +29,7 @@ import CreateNotificationScreen from './screens/Notifications/CreateNotification
 const adminEmailList = [
   process.env.REACT_APP_ADMIN_1,
   process.env.REACT_APP_ADMIN_2,
+  process.env.REACT_APP_ADMIN_3,
 ];
 
 function App() {
